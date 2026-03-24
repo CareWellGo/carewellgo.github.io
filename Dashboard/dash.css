@@ -1,0 +1,40 @@
+/* CareWellGo Custom Styles */
+:root {
+    --cw-primary: #2563eb;
+    --cw-secondary: #4f46e5;
+}
+
+.header-card {
+    background: linear-gradient(135deg, var(--cw-primary), var(--cw-secondary));
+    background-size: 200% 200%;
+    animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.status-badge {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.vital-icon-bg { background-color: #f0f7ff; color: #2563eb; }
+
+/* Status Colors */
+.status-normal { background-color: #ecfdf5; color: #059669; }
+.status-normal .status-dot { background-color: #10b981; }
+
+.status-warning { background-color: #fffbeb; color: #d97706; }
+.status-warning .status-dot { background-color: #f59e0b; }
+
+.status-alert { background-color: #fef2f2; color: #dc2626; }
+.status-alert .status-dot { background-color: #ef4444; }
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}

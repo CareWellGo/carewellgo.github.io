@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareWellGo | Health Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="dash.css">
+</head>
+<body class="bg-slate-50 font-sans antialiased">
+
+    <main class="p-6 md:p-10 max-w-[90rem] mx-auto">
+        <div id="view-dashboard" class="space-y-8">
+            
+            <div class="header-card rounded-3xl p-8 text-white flex flex-wrap justify-between items-center shadow-xl relative overflow-hidden">
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-white/20 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">CareWellGo System</span>
+                    </div>
+                    <h2 class="text-4xl font-extrabold tracking-tight">Robotic Health Scanner</h2>
+                    <p class="text-lg opacity-90 mt-1">Model: <span class="font-mono">HRS-9000</span> | Status: 
+                        <span id="scan-status-text" class="status-badge">Ready</span>
+                    </p>
+                    <p class="text-sm mt-5 opacity-80 flex items-center gap-1.5">
+                        <i data-lucide="clock" class="w-4 h-4"></i> Last scan: <span id="last-scan-time">--:--:--</span>
+                    </p>
+                </div>
+                
+                <div class="relative z-10 flex flex-col items-end gap-4">
+                    <button id="start-scan-btn" onclick="startScanning()" class="bg-white text-blue-700 px-10 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-blue-50 transition-all active:scale-95 flex items-center gap-2.5">
+                        <i data-lucide="play" class="w-5 h-5"></i> Start Diagnostic
+                    </button>
+                    
+                    <div id="scanning-loader" class="hidden flex flex-col items-end gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg font-semibold animate-pulse">Analyzing Vitals...</span>
+                            <div class="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        </div>
+                        <div class="w-64 h-2.5 bg-white/20 rounded-full overflow-hidden">
+                            <div id="scan-progress" class="h-full bg-white transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="vitals-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2.5">
+                        <i data-lucide="activity" class="text-red-500"></i> Heart Rate (BPM)
+                    </h3>
+                    <div class="h-64">
+                        <canvas id="heartRateChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2.5">
+                        <i data-lucide="zap" class="text-amber-500"></i> Movement Analysis
+                    </h3>
+                    <div class="h-64">
+                        <canvas id="activityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <template id="vital-card-template">
+        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+            <div class="flex justify-between items-start mb-4">
+                <div class="p-3 rounded-xl vital-icon-bg">
+                    <i class="vital-icon w-6 h-6"></i>
+                </div>
+                <div class="vital-status-tag flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold">
+                    <span class="status-dot w-2 h-2 rounded-full"></span>
+                    <span class="status-text text-uppercase"></span>
+                </div>
+            </div>
+            <p class="text-slate-500 text-sm font-semibold tracking-wide uppercase vital-label"></p>
+            <div class="flex items-baseline gap-2 mt-2">
+                <span class="text-4xl font-black text-slate-900 vital-value">--</span>
+                <span class="text-lg text-slate-400 font-medium vital-unit"></span>
+            </div>
+        </div>
+    </template>
+
+    <script src="dash.js"></script>
+</body>
+</html>

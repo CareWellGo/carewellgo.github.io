@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareWellGo | Emergency Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="emergency.css">
+</head>
+<body class="bg-slate-50 min-h-screen font-sans text-slate-900">
+
+<nav class="navbar">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <span class="logo-text">CareWell<span class="accent">Go</span></span>
+        </div>
+
+        <div id="robotStatus" class="status-badge">
+            <span class="indicator-container">
+                <span class="indicator-ping"></span>
+                <span class="indicator-dot"></span>
+            </span>
+            <span class="status-text">CareWellGo Unit: Online</span>
+        </div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-4 pb-12 space-y-8">
+        
+        <div id="callingBanner" class="emergency-view rounded-2xl p-8 flex flex-col md:flex-row items-center shadow-2xl border-2 border-red-500 hidden">
+            <div class="bg-red-600 p-6 rounded-2xl mb-4 md:mb-0 md:mr-8 text-white shadow-lg">
+                <i class="fas fa-headset text-4xl"></i>
+            </div>
+            <div class="flex-grow text-center md:text-left">
+                <h1 class="text-3xl font-black text-red-600 uppercase tracking-tighter">Emergency Response Active</h1>
+                <p class="text-slate-600 font-medium">Operator #412 is reviewing your vitals. CareWellGo is standing by.</p>
+            </div>
+            <button onclick="endCall()" class="mt-4 md:mt-0 bg-slate-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-red-600 transition-all">End Session</button>
+        </div>
+
+        <div id="initialPrompt" class="glass-panel rounded-[2rem] p-12 text-center shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-red-500 to-blue-500"></div>
+            
+            <h2 class="text-4xl font-black text-slate-800 mb-4">Urgent Assistance</h2>
+            <p class="text-slate-500 mb-10 max-w-md mx-auto">CareWellGo will automatically alert emergency services and transmit your medical profile in 10 seconds.</p>
+            
+            <div id="countdownContainer" class="relative inline-block">
+                <button id="sosButton" onclick="startEmergencyTimer()" class="group relative overflow-hidden bg-red-600 hover:bg-red-700 text-white py-8 px-12 rounded-2xl shadow-2xl transition-all active:scale-95 min-w-[350px]">
+                    <div id="sosText" class="relative z-10 flex flex-col items-center">
+                        <i class="fas fa-shield-alt text-3xl mb-2"></i>
+                        <span class="text-xl font-black tracking-widest">INITIALIZE SOS</span>
+                    </div>
+                    <span id="timerDisplay" class="hidden text-7xl font-black absolute inset-0 flex items-center justify-center bg-slate-900/90">10</span>
+                </button>
+                
+                <button id="cancelBtn" onclick="cancelEmergency()" class="hidden mt-6 text-red-500 hover:text-red-700 font-black tracking-widest text-sm flex items-center justify-center mx-auto transition">
+                    <i class="fas fa-times-circle mr-2"></i> ABORT EMERGENCY CALL
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-blue-50 p-4 rounded-xl text-blue-600">
+                            <i class="fas fa-map-marked-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800">Precision Location</h3>
+                            <p class="text-sm text-slate-500">Shimla, Himachal Pradesh | 31.1048° N, 77.1734° E</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-lg border border-blue-100 uppercase">GPS Locked</span>
+                </div>
+                  <div class="bg-slate-900 p-6 rounded-2xl shadow-sm text-white">
+                        <h4 class="font-bold text-lg mb-4 flex items-center"><i class="fas fa-microchip mr-2 text-blue-400"></i> Robot Diagnostics</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-slate-400">Battery</span>
+                                <span class="font-bold">88%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-blue-500 h-full w-[88%]"></div>
+                            </div>
+                            <div class="flex justify-between text-xs pt-2">
+                                <span class="text-slate-400">Medical Payload</span>
+                                <span class="text-green-400 font-bold">Ready</span>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="bg-slate-900 p-6 rounded-2xl shadow-sm text-white">
+                        <h4 class="font-bold text-lg mb-4 flex items-center"><i class="fas fa-microchip mr-2 text-blue-400"></i> Robot Diagnostics</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-slate-400">Battery</span>
+                                <span class="font-bold">88%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-blue-500 h-full w-[88%]"></div>
+                            </div>
+                            <div class="flex justify-between text-xs pt-2">
+                                <span class="text-slate-400">Medical Payload</span>
+                                <span class="text-green-400 font-bold">Ready</span>
+                            </div>
+                        </div>
+                    </div>
+<!-- nearby hospital list  -->
+<div class="card">
+    <div class="hospital-grid">
+        
+        <div class="hospital-card">
+            <div class="card-header">
+                <div class="badge-trauma">Level 1 Trauma</div>
+                <span class="distance">2 mi</span>
+            </div>
+            <h4 class="hospital-name">FORTIS Hospital - Level 1 Trauma</h4>
+            <p class="dispatch-info">
+                <i class="far fa-clock"></i> 5 min Dispatch Time
+            </p>
+            <button class="btn-route">Route CareWellGo</button>
+        </div>
+
+        <div class="hospital-card">
+            <div class="card-header">
+                <div class="badge-trauma">Level 2 Trauma</div>
+                <span class="distance">8 mi</span>
+            </div>
+            <h4 class="hospital-name">MAX Hospital - Level 2 Trauma</h4>
+            <p class="dispatch-info">
+                <i class="far fa-clock"></i> 4 min Dispatch Time
+            </p>
+            <button class="btn-route">Route CareWellGo</button>
+        </div>
+
+        <div class="hospital-card">
+            <div class="card-header">
+                <div class="badge-trauma">Level 2 Trauma</div>
+                <span class="distance">8 mi</span>
+            </div>
+            <h4 class="hospital-name">MAX Hospital - Level 2 Trauma</h4>
+            <p class="dispatch-info">
+                <i class="far fa-clock"></i> 4 min Dispatch Time
+            </p>
+            <button class="btn-route">Route CareWellGo</button>
+        </div>
+
+        <div class="hospital-card">
+            <div class="card-header">
+                <div class="badge-trauma">Level 2 Trauma</div>
+                <span class="distance">8 mi</span>
+            </div>
+            <h4 class="hospital-name">MAX Hospital - Level 2 Trauma</h4>
+            <p class="dispatch-info">
+                <i class="far fa-clock"></i> 4 min Dispatch Time
+            </p>
+            <button class="btn-route">Route CareWellGo</button>
+        </div>
+    </div> 
+</div>
+
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="font-bold text-slate-800 text-lg uppercase tracking-tight">Patient Bio</h3>
+                        <i class="fas fa-fingerprint text-blue-500"></i>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex justify-between border-b border-slate-50 pb-4">
+                            <span class="text-sm text-slate-400 font-medium">Blood Group</span>
+                            <span class="text-lg font-black text-red-600">O+</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-50 pb-4">
+                            <span class="text-sm text-slate-400 font-medium">Allergies</span>
+                            <span class="text-sm font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded">Penicillin</span>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-black text-slate-400 mb-2 tracking-widest">Emergency Contact</p>
+                            <p class="text-lg font-bold text-blue-600">+91 (555) 000-0000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-600 rounded-2xl p-6 text-white shadow-lg shadow-blue-200">
+                    <h4 class="text-xs font-black uppercase mb-4 opacity-80">CareWellGo Protocol</h4>
+                    <p class="text-sm leading-relaxed mb-4">Robot is authorized to provide basic first aid and clear a path for responders.</p>
+                    <div class="bg-white/10 p-3 rounded-lg text-xs italic">
+                        "Your health is our priority."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="emerency.js"></script>
+</body>
+</html>

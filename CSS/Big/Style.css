@@ -59,13 +59,40 @@ body {
     100% { transform: scale(1); }
 }
 
-.Nav_Links a {
-    margin-left: 40px;
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
+/* Glassmorphism Effect for the Nav Bar */
+.nav .max-w-7xl {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Neon Emergency Pulse Animation */
+@keyframes emergency-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(220, 38, 38, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+    }
+}
+
+/* Apply pulse to the emergency button */
+button[onclick="triggerEmergency()"] {
+    animation: emergency-glow 2s infinite;
+}
+
+/* Smooth scaling on hover for the container */
+nav div.transition-all {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom Text Gradient */
+.text-transparent {
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 .Btn_Contact_Nav {
