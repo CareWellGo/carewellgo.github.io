@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CareWellGO Health Dashboard - Real-Time Vitals Monitoring, Diagnostic Scanning And Patient Profile Management.">
+    <title>CareWellGO | Dashboard</title>
+    <link rel="icon" href="../Files/Images/Top_Img.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Files/CSS/Common.css">
+    <link rel="stylesheet" href="../Files/CSS/Dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+</head>
+<body>
+<div class="Grid_Overlay"></div>
+
+<nav class="Nav" id="Main_Nav">
+    <div class="Nav_Container">
+        <a href="../" class="Nav_Logo">
+            <img src="../Files/Images/Logo.png" alt="CareWellGO Logo">
+            CareWell<span class="Text_Cyan">GO</span>
+        </a>
+        <button class="Nav_Hamburger" id="Nav_Toggle" aria-label="Toggle Navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="Nav_Links" id="Nav_Links">
+            <li><a href="../" class="Nav_Link">Home</a></li>
+            <li><a href="../AI/" class="Nav_Link">Technology</a></li>
+            <li><a href="../Chat_Bot/" class="Nav_Link">Chat Bot</a></li>
+            <li><a href="../Dashboard/" class="Nav_Link Nav_Active">Dashboard</a></li>
+            <li><a href="../Emergency/" class="Nav_Link Nav_Emrg">Emergency</a></li>
+            <li><a href="../Contact/" class="Nav_Link Nav_Btn">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="Dash_Page">
+    <div class="Dash_Header">
+        <div class="Dash_Header_Inner">
+            <div class="Dash_Title_Area">
+                <h1>Robotic Health Scanner</h1>
+                <p>Model: HRS-9000 | Status: <span id="Scan_Status_Text" class="Text_Cyan">Ready</span> | Last Scan: <span id="Last_Scan_Time" class="Text_Cyan">--:--:--</span></p>
+            </div>
+            <div class="Dash_Header_Actions">
+                <div class="Scan_Status">
+                    <div class="Scan_Status_Dot"></div>
+                    System Active
+                </div>
+                <button class="Btn_Primary" id="Scan_Btn">▶ Start Diagnostic</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="Dash_Body">
+        <div class="Dash_Main">
+            <div class="Vitals_Grid" id="Vitals_Grid"></div>
+
+            <div class="Scan_Panel Glass_Card">
+                <h2>Diagnostic Progress</h2>
+                <div class="Scan_Progress_Wrap">
+                    <div class="Scan_Progress_Bar">
+                        <div class="Scan_Progress_Fill" id="Scan_Fill"></div>
+                    </div>
+                    <div class="Scan_Progress_Label" id="Scan_Label">Press Start Diagnostic To Begin</div>
+                </div>
+                <div class="Last_Scan">
+                    Recent Vitals History:<br>
+                    <div id="Vitals_History_List" style="margin-top: 12px;"></div>
+                </div>
+            </div>
+
+            <div class="Charts_Grid">
+                <div class="Chart_Card Glass_Card">
+                    <h3>❤️ Heart Rate (BPM)</h3>
+                    <div class="Chart_Wrap"><canvas id="Heart_Chart"></canvas></div>
+                </div>
+                <div class="Chart_Card Glass_Card">
+                    <h3>🏃 Movement Analysis</h3>
+                    <div class="Chart_Wrap"><canvas id="Activity_Chart"></canvas></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Dash_Side">
+            <div class="Patient_Panel Glass_Card">
+                <div class="Patient_Panel_Head">
+                    <h2>Patient Profile</h2>
+                    <button class="Btn_Secondary" id="Edit_Patient_Btn" style="padding: 7px 16px; font-size: 0.8rem;">Edit</button>
+                </div>
+                <div class="Patient_Field">
+                    <span class="Patient_Key">Name</span>
+                    <span class="Patient_Val" id="Patient_Name">—</span>
+                </div>
+                <div class="Patient_Field">
+                    <span class="Patient_Key">Patient ID</span>
+                    <span class="Patient_Val Text_Muted" id="Patient_ID">—</span>
+                </div>
+                <div class="Patient_Field">
+                    <span class="Patient_Key">Age</span>
+                    <span class="Patient_Val" id="Patient_Age">—</span>
+                </div>
+                <div class="Patient_Field">
+                    <span class="Patient_Key">Blood Group</span>
+                    <span class="Patient_Val Blood_Val" id="Patient_Blood_Group">—</span>
+                </div>
+                <div class="Patient_Field">
+                    <span class="Patient_Key">Allergies</span>
+                    <span class="Patient_Val" id="Patient_Allergies">—</span>
+                </div>
+                <div class="Patient_Field">
+                    <span class="Patient_Key">Emergency</span>
+                    <span class="Patient_Val" id="Patient_Emergency_Contact">—</span>
+                </div>
+                <div class="Patient_Field">
+                    <span class="Patient_Key">Location</span>
+                    <span class="Patient_Val Text_Muted" id="Patient_Location">—</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="Edit_Modal_Overlay" id="Edit_Modal">
+    <div class="Edit_Modal">
+        <h2>Edit Patient Profile</h2>
+        <div class="Modal_Field"><label class="Modal_Label">Full Name</label><input type="text" class="Modal_Input" id="Edit_Name"></div>
+        <div class="Modal_Field"><label class="Modal_Label">Age</label><input type="number" class="Modal_Input" id="Edit_Age"></div>
+        <div class="Modal_Field"><label class="Modal_Label">Blood Group</label><input type="text" class="Modal_Input" id="Edit_Blood_Group" placeholder="e.g. O+"></div>
+        <div class="Modal_Field"><label class="Modal_Label">Allergies</label><input type="text" class="Modal_Input" id="Edit_Allergies"></div>
+        <div class="Modal_Field"><label class="Modal_Label">Emergency Contact</label><input type="text" class="Modal_Input" id="Edit_Emergency_Contact"></div>
+        <div class="Modal_Field"><label class="Modal_Label">Location</label><input type="text" class="Modal_Input" id="Edit_Location"></div>
+        <div class="Modal_Actions">
+            <button class="Btn_Primary" onclick="Save_Patient()">Save Changes</button>
+            <button class="Btn_Secondary" onclick="Close_Edit_Modal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="../Files/JS/Db.js"></script>
+<script src="../Files/JS/Dashboard.js"></script>
+</body>
+</html>

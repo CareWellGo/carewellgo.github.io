@@ -1,0 +1,155 @@
+.Dash_Page { position: relative; z-index: 1; }
+
+.Dash_Header {
+    background: linear-gradient(135deg, #061628, #0a2040);
+    border-bottom: 1px solid var(--Clr_Border);
+    padding: 32px var(--Side_Pad);
+}
+
+.Dash_Header_Inner {
+    max-width: var(--Max_W);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.Dash_Title_Area h1 { font-size: 1.6rem; font-weight: 800; color: var(--Clr_Text_Bright); margin-bottom: 4px; }
+.Dash_Title_Area p { font-size: 0.84rem; color: var(--Clr_Text_Muted); }
+
+.Dash_Header_Actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.Scan_Status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: var(--R_Full);
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: var(--Clr_Glass);
+    border: 1px solid var(--Clr_Border);
+    color: var(--Clr_Text);
+}
+
+.Scan_Status_Dot { width: 8px; height: 8px; background: var(--Clr_Cyan); border-radius: 50%; }
+
+.Dash_Body {
+    max-width: var(--Max_W);
+    margin: 0 auto;
+    padding: 32px var(--Side_Pad);
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 28px;
+}
+
+.Dash_Main { display: flex; flex-direction: column; gap: 28px; }
+
+.Vitals_Grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.Vital_Card { padding: 24px; cursor: default; }
+
+.Vital_Card_Top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+
+.Vital_Icon {
+    width: 42px; height: 42px;
+    border-radius: var(--R_Md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.Status_Tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--R_Full);
+    letter-spacing: 0.5px;
+}
+
+.Tag_Normal { background: rgba(0, 230, 118, 0.1); color: var(--Clr_Green); border: 1px solid rgba(0, 230, 118, 0.25); }
+.Tag_Warning { background: rgba(255, 215, 64, 0.1); color: var(--Clr_Amber); border: 1px solid rgba(255, 215, 64, 0.25); }
+.Tag_Alert { background: rgba(255, 23, 68, 0.1); color: var(--Clr_Red); border: 1px solid rgba(255, 23, 68, 0.25); }
+
+.Vital_Label { font-size: 0.72rem; color: var(--Clr_Text_Muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+
+.Vital_Value { font-size: 2.2rem; font-weight: 900; color: var(--Clr_Text_Bright); line-height: 1; }
+
+.Vital_Unit { font-size: 0.82rem; font-weight: 500; color: var(--Clr_Text_Muted); margin-left: 4px; }
+
+.Charts_Grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.Chart_Card { padding: 24px; }
+.Chart_Card h3 { font-size: 0.9rem; font-weight: 700; color: var(--Clr_Text_Bright); margin-bottom: 20px; }
+.Chart_Wrap { position: relative; height: 200px; }
+
+.Scan_Panel { padding: 28px; }
+.Scan_Panel h2 { font-size: 1rem; font-weight: 700; color: var(--Clr_Text_Bright); margin-bottom: 24px; }
+
+.Scan_Progress_Wrap { margin: 20px 0; }
+.Scan_Progress_Bar { width: 100%; height: 6px; background: var(--Clr_Glass); border-radius: 3px; overflow: hidden; }
+.Scan_Progress_Fill { height: 100%; width: 0; background: linear-gradient(to right, var(--Clr_Cyan), #33ecff); border-radius: 3px; transition: width 0.1s linear; }
+.Scan_Progress_Label { font-size: 0.76rem; color: var(--Clr_Text_Muted); margin-top: 6px; }
+
+.Last_Scan { font-size: 0.78rem; color: var(--Clr_Text_Muted); margin-top: 16px; line-height: 1.6; }
+.Last_Scan span { color: var(--Clr_Cyan); font-weight: 600; }
+
+.Patient_Panel { padding: 28px; }
+.Patient_Panel_Head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.Patient_Panel_Head h2 { font-size: 1rem; font-weight: 700; color: var(--Clr_Text_Bright); }
+
+.Patient_Field { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--Clr_Border); }
+.Patient_Field:last-child { border-bottom: none; }
+.Patient_Key { font-size: 0.78rem; color: var(--Clr_Text_Muted); font-weight: 500; }
+.Patient_Val { font-size: 0.86rem; font-weight: 600; color: var(--Clr_Text_Bright); }
+.Blood_Val { color: var(--Clr_Red); font-size: 1rem; font-weight: 800; }
+
+.History_List { margin-top: 20px; }
+.History_Entry { padding: 12px 16px; border-radius: var(--R_Md); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+.History_Entry_Left { color: var(--Clr_Text_Muted); }
+.History_Entry_Right { color: var(--Clr_Cyan); font-weight: 600; }
+
+.Edit_Modal_Overlay {
+    position: fixed; inset: 0;
+    background: rgba(3, 14, 30, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.Edit_Modal_Overlay.Visible { display: flex; }
+
+.Edit_Modal {
+    background: #04111f;
+    border: 1px solid var(--Clr_Border_Active);
+    border-radius: var(--R_Xl);
+    padding: 36px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: var(--Shadow_Cyan);
+    animation: Modal_In 0.3s ease;
+}
+
+@keyframes Modal_In { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+.Edit_Modal h2 { font-size: 1.2rem; font-weight: 700; color: var(--Clr_Text_Bright); margin-bottom: 24px; }
+
+.Modal_Field { margin-bottom: 16px; }
+.Modal_Label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--Clr_Text_Muted); margin-bottom: 7px; letter-spacing: 0.5px; }
+.Modal_Input { width: 100%; padding: 11px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--Clr_Border); border-radius: var(--R_Md); color: var(--Clr_Text_Bright); font-size: 0.88rem; outline: none; transition: var(--Transition_Fast); }
+.Modal_Input:focus { border-color: var(--Clr_Cyan); background: rgba(0,229,255,0.04); }
+.Modal_Actions { display: flex; gap: 12px; margin-top: 24px; }
+
+@media (max-width: 1100px) { .Dash_Body { grid-template-columns: 1fr; } .Vitals_Grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .Vitals_Grid { grid-template-columns: 1fr 1fr; } .Charts_Grid { grid-template-columns: 1fr; } }
+@media (max-width: 400px) { .Vitals_Grid { grid-template-columns: 1fr; } }

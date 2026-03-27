@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CareWellGO Emergency Command - Rapid SOS System For Immediate Medical Assistance And Hospital Routing.">
+    <title>CareWellGO | Emergency</title>
+    <link rel="icon" href="../Files/Images/Top_Img.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Files/CSS/Common.css">
+    <link rel="stylesheet" href="../Files/CSS/Emergency.css">
+</head>
+<body>
+<div class="Grid_Overlay"></div>
+
+<nav class="Nav" id="Main_Nav">
+    <div class="Nav_Container">
+        <a href="../" class="Nav_Logo">
+            <img src="../Files/Images/Logo.png" alt="CareWellGO Logo">
+            CareWell<span class="Text_Cyan">GO</span>
+        </a>
+        <button class="Nav_Hamburger" id="Nav_Toggle" aria-label="Toggle Navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="Nav_Links" id="Nav_Links">
+            <li><a href="../" class="Nav_Link">Home</a></li>
+            <li><a href="../AI/" class="Nav_Link">Technology</a></li>
+            <li><a href="../Chat_Bot/" class="Nav_Link">Chat Bot</a></li>
+            <li><a href="../Dashboard/" class="Nav_Link">Dashboard</a></li>
+            <li><a href="../Emergency/" class="Nav_Link Nav_Active Nav_Emrg">Emergency</a></li>
+            <li><a href="../Contact/" class="Nav_Link Nav_Btn">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="Emrg_Page">
+    <div class="Emrg_Nav_Bar">
+        <span class="Emrg_Nav_Logo">CareWell<span>GO</span> Emergency Command</span>
+        <div class="Robot_Online" id="Robot_Status">
+            <div class="Online_Dot"></div>
+            <span class="Online_Text">CareWellGo Unit: Online</span>
+        </div>
+    </div>
+
+    <div class="Emrg_Body">
+        <div class="Calling_Banner" id="Calling_Banner">
+            <div class="Calling_Icon">🎧</div>
+            <div class="Calling_Info">
+                <h2>Emergency Response Active</h2>
+                <p>Operator #412 Is Reviewing Your Vitals. CareWellGo Is Standing By.</p>
+            </div>
+            <button class="Btn_Secondary" onclick="endCall()">End Session</button>
+        </div>
+
+        <div class="SOS_Panel Glass_Card" id="Initial_Prompt">
+            <span class="Section_Label">Emergency Protocol</span>
+            <h2>Urgent Assistance</h2>
+            <p>CareWellGO Will Automatically Alert Emergency Services And Transmit Your Medical Profile In 10 Seconds Of Activation.</p>
+
+            <div class="SOS_Btn_Wrap">
+                <button class="Btn_SOS" id="Sos_Btn" onclick="startEmergencyTimer()">
+                    <div class="SOS_Content" id="Sos_Content">
+                        <div class="SOS_Icon">🛡️</div>
+                        <span class="SOS_Label">Initialize SOS</span>
+                    </div>
+                    <div class="Timer_Display" id="Timer_Display">10</div>
+                </button>
+                <button class="Btn_Abort" id="Cancel_Btn" onclick="cancelEmergency()">✕ Abort Emergency Call</button>
+            </div>
+        </div>
+
+        <div class="Emrg_Grid">
+            <div class="Emrg_Left">
+                <div class="Location_Card">
+                    <div class="Card_Head">
+                        <h3>Precision Location</h3>
+                        <span class="GPS_Tag">GPS Locked</span>
+                    </div>
+                    <div class="Location_Info">
+                        <h4>Shimla, Himachal Pradesh</h4>
+                        <p>31.1048° N, 77.1734° E</p>
+                    </div>
+                </div>
+
+                <div class="Diag_Card">
+                    <h3 style="font-size:0.9rem;font-weight:700;color:var(--Clr_Text_Bright);margin-bottom:16px;">🔬 Robot Diagnostics</h3>
+                    <div class="Diag_Bar_Wrap">
+                        <div class="Diag_Bar_Label"><span>Battery</span><span>88%</span></div>
+                        <div class="Diag_Bar"><div class="Diag_Fill" style="width:88%"></div></div>
+                    </div>
+                    <div class="Diag_Bar_Wrap">
+                        <div class="Diag_Bar_Label"><span>Signal Strength</span><span>97%</span></div>
+                        <div class="Diag_Bar"><div class="Diag_Fill" style="width:97%"></div></div>
+                    </div>
+                    <div class="Diag_Bar_Label" style="margin-top:8px;">
+                        <span>Medical Payload</span>
+                        <span class="Diag_Ready">✓ Ready</span>
+                    </div>
+                </div>
+
+                <div style="padding:20px 0;">
+                    <h3 style="font-size:0.9rem;font-weight:700;color:var(--Clr_Text_Bright);margin-bottom:16px;">🏥 Nearest Hospitals</h3>
+                    <div class="Hospital_Grid">
+                        <div class="Hospital_Card">
+                            <div class="Hospital_Top"><span class="Trauma_Badge">Level 1 Trauma</span><span class="Dist">2 mi</span></div>
+                            <div class="Hospital_Name">FORTIS Hospital</div>
+                            <div class="Hospital_Time">⏱ 5 Min Dispatch Time</div>
+                            <button class="Btn_Route">Route CareWellGo</button>
+                        </div>
+                        <div class="Hospital_Card">
+                            <div class="Hospital_Top"><span class="Trauma_Badge">Level 2 Trauma</span><span class="Dist">4 mi</span></div>
+                            <div class="Hospital_Name">MAX Hospital</div>
+                            <div class="Hospital_Time">⏱ 4 Min Dispatch Time</div>
+                            <button class="Btn_Route">Route CareWellGo</button>
+                        </div>
+                        <div class="Hospital_Card">
+                            <div class="Hospital_Top"><span class="Trauma_Badge">Level 2 Trauma</span><span class="Dist">7 mi</span></div>
+                            <div class="Hospital_Name">AIIMS Shimla</div>
+                            <div class="Hospital_Time">⏱ 8 Min Dispatch Time</div>
+                            <button class="Btn_Route">Route CareWellGo</button>
+                        </div>
+                        <div class="Hospital_Card">
+                            <div class="Hospital_Top"><span class="Trauma_Badge">Level 3</span><span class="Dist">9 mi</span></div>
+                            <div class="Hospital_Name">Indira Gandhi Medical</div>
+                            <div class="Hospital_Time">⏱ 12 Min Dispatch Time</div>
+                            <button class="Btn_Route">Route CareWellGo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Emrg_Right">
+                <div class="Patient_Bio_Card">
+                    <div class="Card_Head">
+                        <h3>Patient Bio</h3>
+                        <span style="font-size:1.2rem;">🔑</span>
+                    </div>
+                    <div class="Bio_Field">
+                        <span class="Bio_Key">Name</span>
+                        <span class="Bio_Val" id="Bio_Name">—</span>
+                    </div>
+                    <div class="Bio_Field">
+                        <span class="Bio_Key">Patient ID</span>
+                        <span class="Bio_Val Text_Muted" id="Bio_ID">—</span>
+                    </div>
+                    <div class="Bio_Field">
+                        <span class="Bio_Key">Blood Group</span>
+                        <span class="Bio_Val Blood_Val" id="Bio_Blood">—</span>
+                    </div>
+                    <div class="Bio_Field">
+                        <span class="Bio_Key">Allergies</span>
+                        <span class="Bio_Val" id="Bio_Allergies">—</span>
+                    </div>
+                    <div class="Bio_Field">
+                        <span class="Bio_Key">Emergency Contact</span>
+                        <span class="Bio_Val Text_Cyan" id="Bio_Contact">—</span>
+                    </div>
+                    <div style="margin-top:16px;">
+                        <a href="../Dashboard/" class="Btn_Secondary" style="font-size:0.78rem;padding:8px 16px;">Update Profile →</a>
+                    </div>
+                </div>
+
+                <div class="Protocol_Card">
+                    <h4>CareWellGo Protocol</h4>
+                    <p>Robot Is Authorized To Provide Basic First Aid, Administer Pre-Approved Medications, And Clear A Path For Emergency Responders.</p>
+                    <div class="Protocol_Quote">"Your Health Is Our Priority. We Are Always Ready."</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../Files/JS/Db.js"></script>
+<script src="../Files/JS/Emergency.js"></script>
+</body>
+</html>

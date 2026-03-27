@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CareWellGO Medical AI - Intelligent Healthcare Conversation System For Symptom Analysis And Health Guidance.">
+    <title>CareWellGO | Medical AI</title>
+    <link rel="icon" href="../Files/Images/Top_Img.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Files/CSS/Common.css">
+    <link rel="stylesheet" href="../Files/CSS/Ai.css">
+</head>
+<body>
+<div class="Grid_Overlay"></div>
+<div class="Scanner_Line"></div>
+
+<nav class="Nav" id="Main_Nav">
+    <div class="Nav_Container">
+        <a href="../" class="Nav_Logo">
+            <img src="../Files/Images/Logo.png" alt="CareWellGO Logo">
+            CareWell<span class="Text_Cyan">GO</span>
+        </a>
+        <button class="Nav_Hamburger" id="Nav_Toggle" aria-label="Toggle Navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="Nav_Links" id="Nav_Links">
+            <li><a href="../" class="Nav_Link">Home</a></li>
+            <li><a href="../AI/" class="Nav_Link Nav_Active">Technology</a></li>
+            <li><a href="../Chat_Bot/" class="Nav_Link">Chat Bot</a></li>
+            <li><a href="../Dashboard/" class="Nav_Link">Dashboard</a></li>
+            <li><a href="../Emergency/" class="Nav_Link Nav_Emrg">Emergency</a></li>
+            <li><a href="../Contact/" class="Nav_Link Nav_Btn">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="Ai_Page">
+    <div class="Ai_Welcome" id="AI_Welcome">
+        <div class="Welcome_Card Glass_Card">
+            <div class="Bot_Eye">🤖</div>
+            <h1>CAREWELL<span class="Text_Cyan">GO</span></h1>
+            <p>Medical Assistance System v2.0. AI-Powered Consultation, Symptom Analysis And Health Guidance — Ready To Assist.</p>
+            <button class="Btn_Primary" onclick="Init_AI_Chat()">Initialize Medical AI</button>
+        </div>
+    </div>
+
+    <div class="Ai_Chat" id="AI_Chat_View" style="display:none;">
+        <div class="Chat_Top_Bar Glass_Card">
+            <div class="Chat_Status">
+                <div class="Chat_Status_Dot"></div>
+                <span class="Chat_Status_Text">AI ONLINE — MEDICAL SYSTEM ACTIVE</span>
+            </div>
+            <div class="Chat_Top_Actions">
+                <button class="Btn_Chat_Action" onclick="Clear_AI_History()">Clear History</button>
+                <button class="Btn_Chat_Action" onclick="document.getElementById('AI_Welcome').style.display='flex'; document.getElementById('AI_Chat_View').style.display='none';">Exit</button>
+            </div>
+        </div>
+
+        <div class="Chat_Messages" id="AI_Messages"></div>
+
+        <div class="Chat_Input_Row Glass_Card">
+            <input type="text" class="Chat_Input" id="AI_Input" placeholder="Describe Your Symptoms Or Ask A Health Question...">
+            <button class="Btn_Send" onclick="Send_AI_Message()">Send</button>
+        </div>
+    </div>
+</div>
+
+<footer class="Footer">
+    <div class="Footer_Container">
+        <div class="Footer_Grid">
+            <div class="Footer_Brand">
+                <div class="Footer_Brand_Name">CareWell<span class="Text_Cyan">GO</span></div>
+                <p>Smart Robotic Healthcare Assistant Powered By AI.</p>
+            </div>
+            <div class="Footer_Col">
+                <h4>Navigation</h4>
+                <a href="../">Home</a>
+                <a href="../Dashboard/">Dashboard</a>
+                <a href="../Chat_Bot/">Chat Bot</a>
+            </div>
+            <div class="Footer_Col">
+                <h4>Support</h4>
+                <a href="../Contact/">Contact Us</a>
+                <a href="../Emergency/">Emergency</a>
+            </div>
+        </div>
+        <div class="Footer_Bottom">
+            <p>© 2025 CareWellGO. All Rights Reserved.</p>
+            <span class="Footer_Status">All Systems Operational</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../Files/JS/Db.js"></script>
+<script src="../Files/JS/Ai.js"></script>
+</body>
+</html>

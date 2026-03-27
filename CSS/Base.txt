@@ -1,4 +1,0 @@
-Mobile     → 0 – 480px
-Tablet     → 481 – 768px
-Laptop     → 769 – 1440px
-Extreme    → More Than 1441px

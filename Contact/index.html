@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact CareWell Robotics - 24/7 Support For Healthcare Robot Systems. Submit A Query Or Request Technical Assistance.">
+    <title>CareWellGO | Contact</title>
+    <link rel="icon" href="../Files/Images/Top_Img.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Files/CSS/Common.css">
+    <link rel="stylesheet" href="../Files/CSS/Contact.css">
+</head>
+<body>
+<div class="Grid_Overlay"></div>
+
+<nav class="Nav" id="Main_Nav">
+    <div class="Nav_Container">
+        <a href="../" class="Nav_Logo">
+            <img src="../Files/Images/Logo.png" alt="CareWellGO Logo">
+            CareWell<span class="Text_Cyan">GO</span>
+        </a>
+        <button class="Nav_Hamburger" id="Nav_Toggle" aria-label="Toggle Navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="Nav_Links" id="Nav_Links">
+            <li><a href="../" class="Nav_Link">Home</a></li>
+            <li><a href="../AI/" class="Nav_Link">Technology</a></li>
+            <li><a href="../Chat_Bot/" class="Nav_Link">Chat Bot</a></li>
+            <li><a href="../Dashboard/" class="Nav_Link">Dashboard</a></li>
+            <li><a href="../Emergency/" class="Nav_Link Nav_Emrg">Emergency</a></li>
+            <li><a href="../Contact/" class="Nav_Link Nav_Active Nav_Btn">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="Contact_Page">
+    <div class="Contact_Hero">
+        <div class="Contact_Hero_Inner">
+            <div>
+                <h1>Contact CareWell Robotics</h1>
+                <p>24/7 Support For Healthcare Robot Systems</p>
+            </div>
+            <div class="System_Online">System Online · Patient Services Active</div>
+        </div>
+    </div>
+
+    <div class="Contact_Body">
+        <div class="Contact_Info">
+            <div class="Info_Card Glass_Card">
+                <div class="Info_Icon Info_Icon_Blue">📞</div>
+                <h3>Emergency Hotline</h3>
+                <p>Available 24/7 For Urgent Support</p>
+                <a href="tel:+180076268911" class="Info_Link">+1-800-ROBOT-911</a>
+                <span class="Response_Tag">⏱ Response Time: &lt; 2 Min</span>
+            </div>
+            <div class="Info_Card Glass_Card">
+                <div class="Info_Icon Info_Icon_Cyan">✉️</div>
+                <h3>Email Support</h3>
+                <p>Technical Inquiries &amp; Feedback</p>
+                <a href="mailto:support@carewell-robotics.com" class="Info_Link">support@carewell-robotics.com</a>
+                <span class="Response_Tag">⏱ Response Time: &lt; 24 Hours</span>
+            </div>
+            <div class="Info_Card Glass_Card">
+                <div class="Info_Icon Info_Icon_Green">📍</div>
+                <h3>Main Facility</h3>
+                <p>Robotics Research Center</p>
+                <span class="Info_Link" style="cursor:default;">2500 Innovation Drive, Silicon Valley, CA 94025</span>
+            </div>
+        </div>
+
+        <div class="Form_Panel Glass_Card">
+            <h2>Send A Message To Our Team</h2>
+            <p>Fill Out The Form Below And Our Robotics Support Team Will Respond Promptly.</p>
+
+            <form id="Contact_Form" onsubmit="Submit_Contact(event)">
+                <div class="Form_Row">
+                    <div class="Form_Field">
+                        <label class="Form_Label" for="Name">Full Name *</label>
+                        <input type="text" class="Form_Input" id="Name" placeholder="Your Name">
+                        <div class="Form_Error" id="Err_Name"></div>
+                    </div>
+                    <div class="Form_Field">
+                        <label class="Form_Label" for="Email">Email Address *</label>
+                        <input type="email" class="Form_Input" id="Email" placeholder="your@email.com">
+                        <div class="Form_Error" id="Err_Email"></div>
+                    </div>
+                </div>
+                <div class="Form_Row">
+                    <div class="Form_Field">
+                        <label class="Form_Label" for="Phone">Phone Number</label>
+                        <input type="tel" class="Form_Input" id="Phone" placeholder="+1 (555) 123-4567">
+                    </div>
+                    <div class="Form_Field">
+                        <label class="Form_Label" for="Subject">Subject *</label>
+                        <select class="Form_Select" id="Subject">
+                            <option value="" disabled selected>Select A Subject</option>
+                            <option value="technical">Technical Support</option>
+                            <option value="sales">Sales Inquiry</option>
+                            <option value="maintenance">Routine Maintenance</option>
+                            <option value="emergency">Emergency Assistance</option>
+                        </select>
+                        <div class="Form_Error" id="Err_Subject"></div>
+                    </div>
+                </div>
+                <div class="Form_Field">
+                    <label class="Form_Label" for="Message">Message *</label>
+                    <textarea class="Form_Textarea" id="Message" rows="5" placeholder="Describe Your Inquiry Or Issue In Detail..."></textarea>
+                    <div class="Form_Error" id="Err_Message"></div>
+                </div>
+                <button type="submit" class="Btn_Submit" id="Submit_Btn">Transmit Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="History_Toggle">
+        <span class="Section_Label">Submission History</span>
+        <button class="Btn_Secondary" id="History_Btn" onclick="Toggle_History()">View Submissions</button>
+    </div>
+
+    <div class="History_Panel" id="History_Panel" style="display:none;"></div>
+</div>
+
+<footer class="Footer">
+    <div class="Footer_Container">
+        <div class="Footer_Grid">
+            <div class="Footer_Brand">
+                <div class="Footer_Brand_Name">CareWell<span class="Text_Cyan">GO</span></div>
+                <p>Smart Robotic Healthcare Assistant Powered By AI.</p>
+            </div>
+            <div class="Footer_Col">
+                <h4>Navigation</h4>
+                <a href="../">Home</a>
+                <a href="../AI/">Technology</a>
+                <a href="../Dashboard/">Dashboard</a>
+            </div>
+            <div class="Footer_Col">
+                <h4>Support</h4>
+                <a href="../Contact/">Contact Us</a>
+                <a href="../Emergency/">Emergency</a>
+            </div>
+        </div>
+        <div class="Footer_Bottom">
+            <p>© 2025 CareWellGO. All Rights Reserved.</p>
+            <span class="Footer_Status">All Systems Operational</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../Files/JS/Db.js"></script>
+<script src="../Files/JS/Contact.js"></script>
+</body>
+</html>

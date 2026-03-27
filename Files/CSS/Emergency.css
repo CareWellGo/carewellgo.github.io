@@ -1,0 +1,192 @@
+.Emrg_Page { position: relative; z-index: 1; }
+
+.Emrg_Nav_Bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px var(--Side_Pad);
+    background: rgba(3, 14, 30, 0.6);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 23, 68, 0.15);
+}
+
+.Emrg_Nav_Logo { font-size: 1.1rem; font-weight: 800; color: var(--Clr_Text_Bright); }
+.Emrg_Nav_Logo span { color: var(--Clr_Cyan); }
+
+.Robot_Online {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: var(--R_Full);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.Online_Dot { width: 8px; height: 8px; border-radius: 50%; background: var(--Clr_Green); animation: Pulse_Dot 1.5s infinite; }
+.Online_Text { font-size: 0.75rem; font-weight: 500; color: var(--Clr_Text); }
+
+.Emrg_Body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px var(--Side_Pad) 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.Calling_Banner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 32px;
+    border-radius: var(--R_Xl);
+    background: linear-gradient(135deg, rgba(255,23,68,0.1), rgba(255,23,68,0.05));
+    border: 2px solid var(--Clr_Red);
+    animation: Banner_Pulse 1.5s infinite alternate;
+    display: none;
+}
+
+.Calling_Banner.Visible { display: flex; }
+
+@keyframes Banner_Pulse { from { border-color: var(--Clr_Red); } to { border-color: rgba(255,23,68,0.4); } }
+
+.Calling_Icon { width: 64px; height: 64px; background: var(--Clr_Red); border-radius: var(--R_Lg); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; }
+.Calling_Info { flex: 1; }
+.Calling_Info h2 { font-size: 1.3rem; font-weight: 900; color: var(--Clr_Red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.Calling_Info p { font-size: 0.88rem; color: var(--Clr_Text_Muted); }
+
+.SOS_Panel {
+    padding: 48px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--R_Xl);
+}
+
+.SOS_Panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, #007bff, var(--Clr_Red), #007bff);
+}
+
+.SOS_Panel h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--Clr_Text_Bright); margin-bottom: 10px; }
+.SOS_Panel > p { font-size: 0.9rem; color: var(--Clr_Text_Muted); max-width: 420px; margin: 0 auto 36px; line-height: 1.7; }
+
+.SOS_Btn_Wrap { display: inline-block; position: relative; }
+
+.Btn_SOS {
+    position: relative;
+    padding: 28px 56px;
+    background: var(--Clr_Red);
+    color: white;
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: var(--R_Xl);
+    min-width: 300px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 40px rgba(255, 23, 68, 0.35);
+}
+
+.Btn_SOS:hover { transform: translateY(-5px); box-shadow: 0 16px 50px rgba(255, 23, 68, 0.5); }
+
+.SOS_Content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.SOS_Icon { font-size: 1.8rem; }
+.SOS_Label { font-size: 0.95rem; font-weight: 900; letter-spacing: 3px; }
+
+.Timer_Display {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    font-weight: 900;
+    color: white;
+    display: none;
+}
+
+.Btn_Abort {
+    display: none;
+    margin-top: 16px;
+    padding: 10px 24px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--Clr_Red);
+    background: rgba(255,23,68,0.08);
+    border: 1px solid rgba(255,23,68,0.3);
+    border-radius: var(--R_Full);
+    transition: var(--Transition_Fast);
+}
+
+.Btn_Abort:hover { background: rgba(255,23,68,0.2); }
+
+.Emrg_Grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
+
+.Emrg_Left { display: flex; flex-direction: column; gap: 20px; }
+.Emrg_Right { display: flex; flex-direction: column; gap: 20px; }
+
+.Location_Card, .Diag_Card, .Patient_Bio_Card, .Protocol_Card { padding: 24px; border-radius: var(--R_Xl); }
+.Location_Card, .Diag_Card { background: rgba(4, 17, 36, 0.8); border: 1px solid var(--Clr_Border); }
+.Patient_Bio_Card { background: rgba(4, 17, 36, 0.8); border: 1px solid var(--Clr_Border); }
+.Protocol_Card { background: linear-gradient(135deg, #1a3ae8, #0d2bd3); border: none; }
+
+.Card_Head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.Card_Head h3 { font-size: 0.9rem; font-weight: 700; color: var(--Clr_Text_Bright); }
+.GPS_Tag { font-size: 0.7rem; font-weight: 700; color: #007bff; background: rgba(0,123,255,0.1); padding: 4px 10px; border-radius: var(--R_Full); border: 1px solid rgba(0,123,255,0.25); }
+
+.Location_Info h4 { font-size: 0.88rem; font-weight: 600; color: var(--Clr_Text_Bright); margin-bottom: 4px; }
+.Location_Info p { font-size: 0.78rem; color: var(--Clr_Text_Muted); }
+
+.Diag_Bar_Wrap { margin-bottom: 14px; }
+.Diag_Bar_Label { display: flex; justify-content: space-between; font-size: 0.78rem; margin-bottom: 6px; }
+.Diag_Bar_Label span:first-child { color: var(--Clr_Text_Muted); }
+.Diag_Bar_Label span:last-child { color: var(--Clr_Text_Bright); font-weight: 600; }
+.Diag_Bar { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+.Diag_Fill { height: 100%; border-radius: 3px; background: linear-gradient(to right, #007bff, var(--Clr_Cyan)); }
+.Diag_Ready { font-size: 0.78rem; color: var(--Clr_Green); font-weight: 600; }
+
+.Hospital_Grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.Hospital_Card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--Clr_Border);
+    border-radius: var(--R_Lg);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    transition: var(--Transition);
+}
+
+.Hospital_Card:hover { border-color: rgba(0,123,255,0.4); background: rgba(0,123,255,0.05); }
+
+.Hospital_Top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.Trauma_Badge { font-size: 0.64rem; font-weight: 900; color: var(--Clr_Red); background: rgba(255,23,68,0.1); border: 1px solid rgba(255,23,68,0.25); padding: 3px 8px; border-radius: var(--R_Sm); text-transform: uppercase; }
+.Dist { font-size: 0.76rem; color: var(--Clr_Text_Muted); font-weight: 600; }
+.Hospital_Name { font-size: 0.84rem; font-weight: 700; color: var(--Clr_Text_Bright); margin-bottom: 6px; }
+.Hospital_Time { font-size: 0.76rem; color: var(--Clr_Text_Muted); margin-bottom: 14px; }
+.Btn_Route { margin-top: auto; padding: 9px; background: rgba(255,255,255,0.05); border: 1px solid var(--Clr_Border); border-radius: var(--R_Md); font-size: 0.78rem; font-weight: 700; color: var(--Clr_Text); width: 100%; transition: var(--Transition_Fast); }
+.Btn_Route:hover { background: #007bff; border-color: #007bff; color: white; }
+
+.Bio_Field { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--Clr_Border); }
+.Bio_Field:last-child { border-bottom: none; }
+.Bio_Key { font-size: 0.78rem; color: var(--Clr_Text_Muted); }
+.Bio_Val { font-size: 0.86rem; font-weight: 600; color: var(--Clr_Text_Bright); }
+.Blood_Val { color: var(--Clr_Red); font-weight: 800; }
+
+.Protocol_Card h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: 0.8; margin-bottom: 12px; color: white; }
+.Protocol_Card p { font-size: 0.84rem; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 14px; }
+.Protocol_Quote { font-size: 0.78rem; font-style: italic; padding: 12px 16px; background: rgba(255,255,255,0.1); border-radius: var(--R_Md); color: rgba(255,255,255,0.75); }
+
+@media (max-width: 900px) { .Emrg_Grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .Hospital_Grid { grid-template-columns: 1fr; } .Btn_SOS { min-width: 260px; padding: 24px 36px; } .Calling_Banner { flex-direction: column; text-align: center; } }

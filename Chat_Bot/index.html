@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CareWellGO Chat Bot - AI Healthcare Assistant Chat Interface With Persistent Conversation History.">
+    <title>CareWellGO | Chat Bot</title>
+    <link rel="icon" href="../Files/Images/Top_Img.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Files/CSS/Common.css">
+    <link rel="stylesheet" href="../Files/CSS/Chat_Bot.css">
+</head>
+<body>
+<div class="Grid_Overlay"></div>
+
+<nav class="Nav" id="Main_Nav">
+    <div class="Nav_Container">
+        <a href="../" class="Nav_Logo">
+            <img src="../Files/Images/Logo.png" alt="CareWellGO Logo">
+            CareWell<span class="Text_Cyan">GO</span>
+        </a>
+        <button class="Nav_Hamburger" id="Nav_Toggle" aria-label="Toggle Navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="Nav_Links" id="Nav_Links">
+            <li><a href="../" class="Nav_Link">Home</a></li>
+            <li><a href="../AI/" class="Nav_Link">Technology</a></li>
+            <li><a href="../Chat_Bot/" class="Nav_Link Nav_Active">Chat Bot</a></li>
+            <li><a href="../Dashboard/" class="Nav_Link">Dashboard</a></li>
+            <li><a href="../Emergency/" class="Nav_Link Nav_Emrg">Emergency</a></li>
+            <li><a href="../Contact/" class="Nav_Link Nav_Btn">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="Bot_Page">
+    <div class="Bot_Container">
+        <div class="Bot_Header">
+            <div class="Bot_Status_Info">
+                <div class="Bot_Status_Dot"></div>
+                <span class="Bot_Status_Label">AI ONLINE</span>
+            </div>
+            <div class="Bot_Header_Title">CareWellGO Assistant</div>
+            <div class="Bot_Header_Actions">
+                <button class="Btn_Clear_Bot" onclick="Clear_Bot_Chat()">Clear</button>
+                <button class="Btn_Power Btn_Power_On" id="Power_Btn" onclick="Toggle_Power()">POWER</button>
+            </div>
+        </div>
+
+        <div class="Bot_Messages" id="Bot_Messages"></div>
+
+        <div class="Bot_Input_Area">
+            <input type="text" class="Bot_Input" id="Bot_Input" placeholder="Type Your Message...">
+            <button class="Btn_Bot_Send" id="Bot_Send">Send</button>
+        </div>
+    </div>
+</div>
+
+<script src="../Files/JS/Db.js"></script>
+<script src="../Files/JS/Chat_Bot.js"></script>
+</body>
+</html>
